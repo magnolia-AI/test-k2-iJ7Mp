@@ -8,6 +8,12 @@ import { Menu } from 'lucide-react'
 export function MobileNav() {
   const [open, setOpen] = useState(false)
 
+  const navLinks = [
+    { href: "#features", label: "Features" },
+    { href: "#about", label: "About" },
+    { href: "#contact", label: "Contact" }
+  ]
+
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
@@ -18,27 +24,16 @@ export function MobileNav() {
       </SheetTrigger>
       <SheetContent side="left" className="w-[240px] sm:w-[300px]">
         <nav className="flex flex-col gap-4 mt-8">
-          {/* <a
-            href="#"
-            className="px-2 py-1 text-foreground hover:text-primary transition-colors"
-            onClick={() => setOpen(false)}
-          >
-            Link 1
-          </a>
-          <a
-            href="#"
-            className="px-2 py-1 text-foreground hover:text-primary transition-colors"
-            onClick={() => setOpen(false)}
-          >
-            Link 2
-          </a>
-          <a
-            href="#"
-            className="px-2 py-1 text-foreground hover:text-primary transition-colors"
-            onClick={() => setOpen(false)}
-          >
-            Link 3
-          </a> */}
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="px-2 py-1 text-foreground hover:text-primary transition-colors"
+              onClick={() => setOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
         </nav>
       </SheetContent>
     </Sheet>
